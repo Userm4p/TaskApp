@@ -1,0 +1,78 @@
+.Modify-page-container {
+    width: 100vw;
+    height: 84vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: url(https://cdn.pixabay.com/photo/2012/12/24/08/39/background-72250_960_720.jpg);
+    padding-top: 50px;
+}
+
+.modify-text-title {
+    color: black;
+    background-color: white;
+    box-shadow: 1px 0px 10px black;
+}
+
+.modify-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+
+.title-text {
+    font-size: 25px;
+}
+
+.modify-li-input {
+    font-size: 18px;
+    background-color: white;
+    border: none;
+    transition: 0.3s ease-in-out;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.modify-li-input:focus {
+    outline: none;
+    box-shadow: 1px 2px 10px grey;
+    
+}
+
+.modify-li-input:focus::placeholder { 
+    color: transparent;
+    text-shadow: none;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.modify-text-area {
+    font-size: 18px;
+    background-color: white;
+    border: none;
+    transition: 0.3s ease-in-out;
+    margin-bottom: 10px;
+    width: 95%;
+    min-height: 10rem;
+    box-shadow: 0px 1px 4px rgb(138, 138, 138);
+    background-color: white;
+    border-radius: 12px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.modify-text-area:focus {
+    outline: none;
+    box-shadow: 1px 2px 10px grey;
+    
+}
+
+.modify-text-area:focus::placeholder { 
+    color: transparent;
+    text-shadow: none;
+}
