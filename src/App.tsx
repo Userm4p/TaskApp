@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { Router } from './app/routes/Routes';
+import { LoginContext } from './contexts/LoginContext';
+import { LoginReducer } from './contexts/LoginActions';
+import { useReducer } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const init = () => {
+  const loginData = sessionStorage.getItem('login');
+  const loginPersistData = localStorage.getItem('login');
+  return (loginData) 
+    ? JSON.parse(loginData) 
+    : (loginPersistData) ? JSON.parse(loginPersistData) 
+    :
+    {
+      logged:false,
+      user: null
+    }
 }
 
-export default App;
+const App = () => {
+  
+  const [login, dispatch]  = useReducer( LoginReducer, {} , init);
+
+  
+
+  return (
+    <div className='App'>
+      <LoginContext.Provider value={{
+        login, dispatch
+      }}>
+        <Router />
+      </LoginContext.Provider> 
+    </div>
+  )
+}
+
+export default App
