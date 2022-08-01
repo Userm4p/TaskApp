@@ -1,3 +1,6 @@
+.mainpage {
+    background-image: url(https://cdn.pixabay.com/photo/2012/12/24/08/39/background-72250_960_720.jpg);
+}
 
 .mainpage_container {
     color: white;
@@ -7,7 +10,7 @@
     text-align: center;
     align-items: top;
     justify-content: center;
-    background-image: url(https://cdn.pixabay.com/photo/2012/12/24/08/39/background-72250_960_720.jpg);
+    
 }
 
 

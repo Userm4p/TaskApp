@@ -5,14 +5,14 @@ import { types } from '../../../contexts/SelectedNoteType';
 import { useNavigate } from 'react-router-dom';
 import { mockDataNotes } from './mockDataNotes';
 
-export interface ItemMock  {
+export interface ItemMock {
   id: number;
   title: string;
   description: string;
   points: {
-      id: number;
-      status: number;
-      paragraphs: string;
+    id: number;
+    status: number;
+    paragraphs: string;
   }[];
   status: number;
 }
@@ -20,28 +20,32 @@ export interface ItemMock  {
 export const MainPage = () => {
 
   const navigate = useNavigate()
-  
 
-  const {dispatch} = useContext(SelectedNoteContext)
 
-  const handleClick = (item:ItemMock) => {
-    dispatch({type: types.Mod, payload: {item}})
+  const { dispatch } = useContext(SelectedNoteContext)
+
+  const handleClick = (item: ItemMock) => {
+    dispatch({ type: types.Mod, payload: { item } })
     navigate('/mod')
   }
 
+  
+
   return (
-    <div className="mainpage_container">
-      {
-        mockDataNotes.map((notesByDay, index) => {
-          return <div key={index} className="notesByDay">
-            <h1 className='header-text'>{(notesByDay.notes_date.getDate() === new Date().getDate() && notesByDay.notes_date.getMonth() === new Date().getMonth()) && 'Hoy'}</h1>
-            <h1 className='header-text'>{(notesByDay.notes_date.getDate() === new Date().getDate() - 1 && notesByDay.notes_date.getMonth() === new Date().getMonth()) && 'Ayer'}</h1>
-            <h1 className='header-text'>
-              {((!(notesByDay.notes_date.getDate() === new Date().getDate() && notesByDay.notes_date.getMonth() === new Date().getMonth()) )
-                && (!(notesByDay.notes_date.getDate() === new Date().getDate() - 1 && notesByDay.notes_date.getMonth() === new Date().getMonth()))) &&
-                 notesByDay.notes_date.getDate()+'/'+notesByDay.notes_date.getMonth()+"/"+notesByDay.notes_date.getFullYear()
-              }</h1>
-            {notesByDay.notes.map((item) => {
+    <div className='mainpage'>
+      <div className="mainpage_container">
+
+        {
+          mockDataNotes.map((notesByDay, index) => {
+            return <div key={index} className="notesByDay">
+              <h1 className='header-text'>{(notesByDay.notes_date.getDate() === new Date().getDate() && notesByDay.notes_date.getMonth() === new Date().getMonth()) && 'Hoy'}</h1>
+              <h1 className='header-text'>{(notesByDay.notes_date.getDate() === new Date().getDate() - 1 && notesByDay.notes_date.getMonth() === new Date().getMonth()) && 'Ayer'}</h1>
+              <h1 className='header-text'>
+                {((!(notesByDay.notes_date.getDate() === new Date().getDate() && notesByDay.notes_date.getMonth() === new Date().getMonth()))
+                  && (!(notesByDay.notes_date.getDate() === new Date().getDate() - 1 && notesByDay.notes_date.getMonth() === new Date().getMonth()))) &&
+                  notesByDay.notes_date.getDate() + '/' + notesByDay.notes_date.getMonth() + "/" + notesByDay.notes_date.getFullYear()
+                }</h1>
+              {notesByDay.notes.map((item) => {
                 return <div className="task_container" key={item.id}>
                   <span>{(item.status === 0)
                     ?
@@ -65,7 +69,7 @@ export const MainPage = () => {
                   <ul className="point_list">
                     {
                       item.points.map((point) => {
-                        return <li key={point.id} style={{textDecoration:(point.status===1) ? 'line-through':'none'}} >{point.paragraphs}</li>
+                        return <li key={point.id} style={{ textDecoration: (point.status === 1) ? 'line-through' : 'none' }} >{point.paragraphs}</li>
                       })
                     }
                   </ul>
@@ -90,12 +94,14 @@ export const MainPage = () => {
                       </svg>
                     </button>
                   </div>
-              </div>
+                </div>
               })}
-          </div>
-          
-        })
-      }
+            </div>
+
+          })
+        }
+      </div>
     </div>
+
   )
 }

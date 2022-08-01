@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { types } from '../../../contexts/SelectedNoteType';
 import './ModifyPage.css'
 
-interface Ipoints {
+export interface Ipoints {
   id: number,
   status: boolean,
   paragraphs: string

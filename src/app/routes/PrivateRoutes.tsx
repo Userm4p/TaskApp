@@ -7,6 +7,7 @@ import { Header } from '../components/header/Header';
 
 import { MainPage } from '../pages/MainPage/MainPage';
 import { ModifyPage } from '../pages/ModifyPage/ModifyPage';
+import { NowNotePage } from '../pages/NewNotePage/NowNotePage';
 
 const init = () => {
   return {
@@ -34,7 +35,7 @@ export const PrivateRoutes = () => {
               <ModifyPage/>
             </SelectedNoteContext.Provider>
           }/>
-        
+          <Route path="/newnote" element={<NowNotePage/>}/>
       </Routes>
       <Footer />
     </>
