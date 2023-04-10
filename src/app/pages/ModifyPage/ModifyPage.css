@@ -1,6 +1,6 @@
 .Modify-page-container {
     width: 100vw;
-    height: 84vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

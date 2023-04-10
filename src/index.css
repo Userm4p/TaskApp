@@ -3,3 +3,17 @@ body {
     font-family: 'Edu VIC WA NT Beginner', cursive;
     background-color: rgb(240, 240, 240);
 }
+
+.header-text{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 30px;
+    text-shadow: 1px 1px 4px rgb(107, 107, 107);
+    margin-left: 10px;
+    padding: 10px;
+    background-color: #071A52;
+    border-radius: 15px;
+    box-shadow: 1px 1px 8px green;
+    animation: dropIn 1s ease forwards;
+    animation-delay: calc(var(--order) * 50ms); 
+}

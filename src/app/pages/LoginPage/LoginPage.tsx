@@ -5,7 +5,7 @@ import { LoginContext } from '../../../contexts/LoginContext';
 import { types } from '../../../contexts/LoginTypes';
 import './LoginPage.css'
 
-export const LoginPage = () => {
+export default function LoginPage () {
 
   const [form, setForm] = useState({
     username: '',
@@ -25,7 +25,10 @@ export const LoginPage = () => {
 
   const handleLogin = (e: FormEvent, keepLogin: boolean) => {
     e.preventDefault();
-    dispatch({ type: types.login })
+    dispatch({ type: types.login, payload: {
+      user:'Userm4p',
+      email: 'ejemplo@ejemplo.com'
+    } })
     if (keepLogin) {
       localStorage.setItem('login',
         JSON.stringify({
@@ -60,12 +63,11 @@ export const LoginPage = () => {
             />
           </div>
           <div className="register-link-text">
-            <span style={{marginRight:'5px'}}>¿Aun no tienes una cuenta?</span><Link to={'/new'}>Registrarte</Link>
+            <span style={{marginRight:'5px'}}>¿Aún no tienes una cuenta?</span><Link to={'/new'}>Registrarte</Link>
           </div>
           <button className="login-button" type='submit' style={{ marginTop: '20px' }}>Ingresar</button>
         </form>
       </div>
     </>
-
   )
 }

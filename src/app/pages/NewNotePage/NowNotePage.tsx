@@ -2,8 +2,11 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Ipoints } from '../ModifyPage/ModifyPage';
+import { useNote } from '../../hooks/useNote';
+import '../ModifyPage/ModifyPage.css'
+import '../MainPage/MainPage.css'
 
-export const NowNotePage = () => {
+export default function NowNotePage () {
 
 
     const navigate = useNavigate()
@@ -28,65 +31,12 @@ export const NowNotePage = () => {
         navigate('/')
     }
 
-    const handleAddPoint = (e: any) => {
-        e.preventDefault()
-        let lastPoints = selectedNote?.item.points
-        const newPoint = {
-            id: lastPoints.length,
-            status: 0,
-            paragraphs: ''
-        }
-        lastPoints.push(newPoint)
-        setSelectedNote(
-            {
-                item: {
-                    ...selectedNote?.item,
-                    points: lastPoints
-                }
-            }
-        )
-    }
-
-    const handleDeletePoint = (e: any) => {
-        e.preventDefault()
-        let lastPoints = selectedNote?.item.points
-        lastPoints.pop()
-        setSelectedNote(
-            {
-                item: {
-                    ...selectedNote?.item,
-                    points: lastPoints
-                }
-            }
-        )
-    }
-
-    const handleChange = (e: any, id: number) => {
-        let points = selectedNote?.item.points;
-        points[id] = {
-            ...points[id],
-            paragraphs: e.target.value
-        }
-        setSelectedNote((
-            {
-                item: {
-                    ...selectedNote?.item,
-                    points
-                }
-            }
-        ))
-        console.log(selectedNote);
-    }
-
-    const handleChangeTexts = (e: any) => {
-        setSelectedNote({
-            item: {
-                ...selectedNote.item,
-                [e.currentTarget.name]: e.currentTarget.value
-            }
-
-        })
-    }
+    const {
+        handleAddPoint,
+        handleDeletePoint,
+        handleChange,
+        handleChangeTexts
+      } = useNote({setSelectedNote, selectedNote})
 
     return (
         <>

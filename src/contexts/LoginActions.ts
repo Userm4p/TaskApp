@@ -1,29 +1,43 @@
 import { types } from "./LoginTypes";
 
 interface Iaction {
-    type : string;
-    payload : any;
+    type: string;
+    payload: {
+        user:string,
+        email:string
+      } | null;
 }
 
-export const LoginReducer = (state : any , action : Iaction) => {
+interface state {
+    logged:boolean;
+    user?: {
+      user?:string,
+      email?:string
+    } | null;
+}
 
-    if(action.type === types.login){
-        return {
-            logged: true,
-            user: {
-                ...action.payload
+
+export const LoginReducer = (state :state, action: Iaction) => {
+    switch (action.type) {
+        case types.login:
+            return {
+                logged: true,
+                user: {
+                    ...action.payload
+                }
             }
-        }
-    }else if(action.type === types.logout){
-        return {
-            logged:false,
-            user: null
-        }
-    }else{
-        return {
-            logged:false,
-            user: null
-        }
+            break;
+        case types.logout:
+            return {
+                logged: false,
+                user: null
+            }
+            break;
+        default:
+            return {
+                logged: false,
+                user: null
+            }
+            break;
     }
-    
 }

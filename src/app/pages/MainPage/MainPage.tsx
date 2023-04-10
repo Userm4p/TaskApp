@@ -17,10 +17,10 @@ export interface ItemMock {
   status: number;
 }
 
-export const MainPage = () => {
+export default function MainPage () {
+
 
   const navigate = useNavigate()
-
 
   const { dispatch } = useContext(SelectedNoteContext)
 
@@ -38,9 +38,15 @@ export const MainPage = () => {
         {
           mockDataNotes.map((notesByDay, index) => {
             return <div key={index} className="notesByDay">
-              <h1 className='header-text'>{(notesByDay.notes_date.getDate() === new Date().getDate() && notesByDay.notes_date.getMonth() === new Date().getMonth()) && 'Hoy'}</h1>
-              <h1 className='header-text'>{(notesByDay.notes_date.getDate() === new Date().getDate() - 1 && notesByDay.notes_date.getMonth() === new Date().getMonth()) && 'Ayer'}</h1>
-              <h1 className='header-text'>
+              <h1 className='header-text'
+                style={{ "--order": 1 } as React.CSSProperties}
+              >{(notesByDay.notes_date.getDate() === new Date().getDate() && notesByDay.notes_date.getMonth() === new Date().getMonth()) && 'Hoy'}</h1>
+              <h1 className='header-text' 
+                style={{ "--order": 2 } as React.CSSProperties}
+              >{(notesByDay.notes_date.getDate() === new Date().getDate() - 1 && notesByDay.notes_date.getMonth() === new Date().getMonth()) && 'Ayer'}</h1>
+              <h1 className='header-text'
+                style={{ "--order": 3 } as React.CSSProperties}
+              >
                 {((!(notesByDay.notes_date.getDate() === new Date().getDate() && notesByDay.notes_date.getMonth() === new Date().getMonth()))
                   && (!(notesByDay.notes_date.getDate() === new Date().getDate() - 1 && notesByDay.notes_date.getMonth() === new Date().getMonth()))) &&
                   notesByDay.notes_date.getDate() + '/' + notesByDay.notes_date.getMonth() + "/" + notesByDay.notes_date.getFullYear()

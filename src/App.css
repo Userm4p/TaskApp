@@ -5,3 +5,94 @@
     left: 0;
     padding-bottom: 4.2rem;
 }
+
+.form-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #caffea;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgb(2,0,36);
+    background: linear-gradient(rgba(136,235,165,1) 35%, rgba(0,212,255,1) 100%);
+    color: white;
+    padding: 30px;
+    text-shadow: 1px 0px 10px grey;
+    border-radius: 10px;
+    box-shadow: 1px 2px 10px grey;
+}
+
+.login-input {
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    font-size: medium;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    text-shadow: 1px 1px 4px rgb(153, 153, 153);
+    border: none;
+    border-radius: 4px;
+    transition: 0.2s ease-in-out;
+}
+
+.login-input:focus {
+    outline: none;
+    box-shadow: 1px 2px 10px grey;
+    
+}
+
+.login-input:focus::placeholder { 
+    color: transparent;
+    text-shadow: none;
+}
+.keep-session-container {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0, 162, 255);    
+    padding: 0px 10px;
+    border-radius: 4px;
+}
+
+.keep-session-text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+}
+
+.login-button {
+    cursor: pointer;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgb(107, 107, 107);
+    padding: 5px 10px;
+    font-size: 16px;
+    background: rgb(103, 95, 255);
+    color: white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 8px rgb(80, 150, 255);
+}
+
+.register-link-text{
+    color: grey;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);    
+    padding: 0px 10px;
+    border-radius: 4px;
+    font-size: 20px;
+}
+

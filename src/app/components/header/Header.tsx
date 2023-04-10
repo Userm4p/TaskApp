@@ -5,7 +5,7 @@ import { LoginContext } from '../../../contexts/LoginContext';
 import { types } from '../../../contexts/LoginTypes';
 import { useNavigate } from 'react-router-dom';
 
-export const Header = () => {
+export default function Header () {
 
 
   const navigate = useNavigate()

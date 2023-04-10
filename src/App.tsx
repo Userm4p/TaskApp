@@ -7,21 +7,21 @@ import { useReducer } from 'react';
 const init = () => {
   const loginData = sessionStorage.getItem('login');
   const loginPersistData = localStorage.getItem('login');
-  return (loginData) 
-    ? JSON.parse(loginData) 
-    : (loginPersistData) ? JSON.parse(loginPersistData) 
-    :
-    {
-      logged:false,
-      user: null
-    }
+  return (loginData)
+    ? JSON.parse(loginData)
+    : (loginPersistData) ? JSON.parse(loginPersistData)
+      :
+      {
+        logged: false,
+        user: null
+      }
 }
 
 const App = () => {
-  
-  const [login, dispatch]  = useReducer( LoginReducer, {} , init);
 
-  
+  const [login, dispatch] = useReducer(LoginReducer, {}, init);
+
+
 
   return (
     <div className='App'>
@@ -29,7 +29,7 @@ const App = () => {
         login, dispatch
       }}>
         <Router />
-      </LoginContext.Provider> 
+      </LoginContext.Provider>
     </div>
   )
 }

@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useContext } from 'react';
 import { SelectedNoteContext } from '../../../contexts/SelectedNoteContext';
 import { Link, useNavigate } from 'react-router-dom';
-import { types } from '../../../contexts/SelectedNoteType';
+
 import './ModifyPage.css'
+import { types } from '../../../contexts/SelectedNoteType';
+import { useNote } from '../../hooks/useNote';
 
 export interface Ipoints {
   id: number,
@@ -11,14 +13,25 @@ export interface Ipoints {
   paragraphs: string
 }
 
-export const ModifyPage = () => {
-
-
-  const navigate = useNavigate()
+export default function ModifyPage () {
 
   const { dispatch, mod } = useContext(SelectedNoteContext)
 
   const [selectedNote, setSelectedNote] = useState<any>()
+
+  const {
+    handleAddPoint,
+    handleDeletePoint,
+    handleChange,
+    handleChangeTexts
+  } = useNote({setSelectedNote, selectedNote})
+  
+  const navigate = useNavigate()
+
+  const HandleCancel = () => {
+      dispatch(types.NoMod);
+      navigate('/')
+  }
 
   useEffect(() => {
     if (mod.note) {
@@ -27,70 +40,7 @@ export const ModifyPage = () => {
   }, [mod.note])
 
 
-  const HandleCancel = () => {
-    dispatch(types.NoMod);
-    navigate('/') 
-  }
-
-  const handleAddPoint = (e: any) => {
-    e.preventDefault()
-    let lastPoints = selectedNote?.item.points
-    const newPoint = {
-      id: lastPoints.length,
-      status: 0,
-      paragraphs: ''
-    }
-    lastPoints.push(newPoint)
-    setSelectedNote(
-      {
-        item: {
-          ...selectedNote?.item,
-          points: lastPoints
-        }
-      }
-    )
-  }
-
-  const handleDeletePoint = (e: any) => {
-    e.preventDefault()
-    let lastPoints = selectedNote?.item.points
-    lastPoints.pop()
-    setSelectedNote(
-      {
-        item: {
-          ...selectedNote?.item,
-          points: lastPoints
-        }
-      }
-    )
-  }
-
-  const handleChange = (e: any, id: number) => {
-    let points = selectedNote?.item.points;
-    points[id] = {
-      ...points[id],
-      paragraphs: e.target.value
-    }
-    setSelectedNote((
-      {
-        item: {
-          ...selectedNote?.item,
-          points
-        }
-      }
-    ))
-    console.log(selectedNote);
-  }
-
-  const handleChangeTexts = (e: any) => {
-    setSelectedNote({
-      item: {
-        ...selectedNote.item,
-        [e.currentTarget.name]: e.currentTarget.value
-      }
-
-    })
-  }
+  
 
   return (
     <>
@@ -137,7 +87,7 @@ export const ModifyPage = () => {
           :
           <div>
             <div className="register-link-text">
-              <span style={{ marginRight: '5px' }}>Parece que no se has seleccionado ninguna nota ¿Regresar a la <Link to={'/'}>Pagina principal</Link>?</span>
+              <span style={{ marginRight: '5px' }}>Parece que no se ha seleccionado ninguna nota ¿Regresar a la <Link to={'/'}>Pagina principal</Link>?</span>
             </div>
           </div>
 

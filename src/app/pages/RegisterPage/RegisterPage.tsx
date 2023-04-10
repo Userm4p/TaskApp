@@ -5,7 +5,7 @@ import { LoginContext } from '../../../contexts/LoginContext';
 import { types } from '../../../contexts/LoginTypes';
 import './RegisterPage.css'
 
-export const RegisterPage = () => {
+export default function RegisterPage () {
 
   const [form, setForm] = useState({
     username: '',
